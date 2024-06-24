@@ -3,6 +3,7 @@
 namespace Esteveli\SpainValidator\Validator\Constraints;
 
 use Skilla\ValidatorCifNifNie\Generator;
+use Skilla\ValidatorCifNifNie\InvalidParameterException;
 use Skilla\ValidatorCifNifNie\Validator;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -38,8 +39,12 @@ class DniCifValidator extends ConstraintValidator {
 
         $value = (string) $value;
 
-        if($this->validator->validate($value)){
-            return;
+        try {
+            if($this->validator->validate($value)){
+                return;
+            }
+        }catch (InvalidParameterException){
+
         }
 
         $this->context
