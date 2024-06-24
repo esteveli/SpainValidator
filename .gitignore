@@ -4,3 +4,5 @@
 -autoload.php
 -/vendor/
 /nbproject/
+vendor
+.idea
